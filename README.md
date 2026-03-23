@@ -1,184 +1,149 @@
-# Simulink-Design-2
+# Méthode de travail – Projet Simulink avec GitHub
 
-# 🤝 Guide de collaboration – Projet Simulink
+##  Objectif
 
-## 📌 Objectif
+Ce guide explique comment :
 
-Ce dépôt permet de travailler en équipe sur un modèle Simulink en utilisant GitHub.
-⚠️ Attention : les fichiers `.slx` étant binaires, certaines règles doivent être respectées pour éviter les conflits.
+* récupérer le projet (clone)
+* travailler dessus
+* envoyer vos modifications (push)
 
 ---
 
-## 🚀 Démarrage
+# 1. Récupérer le projet (clone)
 
-### 1. Cloner le projet
+# ⚠️ IMPORTANT
+
+On travail troujours localement
+C'est pourquoi il faut cloner
+
+---
+
+
+### Étape 1 — Ouvrir un terminal
+
+Sur Windows :
+
+* PowerShell
+* ou Invite de commande (cmd)
+
+---
+
+### Étape 2 — Aller dans le dossier ou vous voulez créer votre repositoire
+
+Exemple :
 
 ```bash
-git clone <URL_DU_REPO>
-cd <NOM_DU_REPO>
+cd H:\document\École\Université\Design 2
 ```
 
 ---
 
-### 2. Créer une branche de travail
+### Étape 3 — Cloner le projet
 
-Toujours travailler sur une branche, jamais directement sur `main`.
+👉 Copier-coller EXACTEMENT :
 
 ```bash
-git checkout -b feature-nom
+git clone https://github.com/Jotur/Simulink-Design-2.git
 ```
-
-Exemples :
-
-* `feature-control`
-* `feature-capteur`
-* `fix-simulation`
 
 ---
 
-## 🔄 Workflow de travail
-
-### Étape 1 — Mettre à jour le projet
-
-Avant de commencer :
+### Étape 4 — Entrer dans le projet
 
 ```bash
-git pull origin main
+cd Simulink-Design-2
 ```
 
 ---
 
-### Étape 2 — Travailler sur le projet
-
-* Modifier les fichiers nécessaires (`.slx`, `.m`, etc.)
-* Tester la simulation avant de commit
-
----
-
-### ⚠️ Règle critique (Simulink)
-
-👉 Une seule personne modifie le fichier `.slx` à la fois.
-
-Avant de modifier :
-
-* Informer l’équipe (Discord / Teams / etc.)
-* Vérifier que personne ne travaille dessus
-
----
-
-### Étape 3 — Sauvegarder les modifications
-
-```bash
-git add .
-git commit -m "Description claire des modifications"
-```
-
-Exemples de messages :
-
-* `Ajout du contrôleur PID`
-* `Correction du gain du capteur`
-* `Refactor du modèle de contrôle`
-
----
-
-### Étape 4 — Envoyer les changements
-
-```bash
-git push origin feature-nom
-```
-
----
-
-### Étape 5 — Créer une Pull Request
-
-* Aller sur GitHub
-* Cliquer sur **Compare & pull request**
-* Décrire les changements
-* Demander une validation si nécessaire
-
----
-
-## 📁 Organisation du projet
-
-```text
-model/      → fichiers Simulink (.slx)
-scripts/    → scripts MATLAB (.m)
-data/       → données (.mat)
-docs/       → documentation
-```
-
----
-
-## 🧠 Bonnes pratiques
-
-### ✔️ Général
-
-* Toujours faire `git pull` avant de travailler
-* Utiliser des branches pour chaque modification
-* Écrire des messages de commit clairs
-
----
-
-### ✔️ Simulink
-
-* Ne jamais modifier le `.slx` à plusieurs en même temps
-* Tester le modèle avant de commit
-* Si possible, diviser le modèle en sous-modèles (Model References)
-
----
-
-### ✔️ Git
-
-* Ne pas commit les fichiers temporaires (`slprj`, `.slxc`, etc.)
-* Faire des commits petits et fréquents
-* Ne pas travailler directement sur `main`
-
----
-
-## 🚫 À éviter
-
-* ❌ Commit sans tester
-* ❌ Modifier directement `main`
-* ❌ Écraser le travail d’un autre
-* ❌ Commit des fichiers générés automatiquement
-
----
-
-## 🛠️ En cas de problème
-
-### Conflit Git
+#  Comment Travailler sur le projet
+1. Se mettre à jour avec gi tpull
 
 ```bash
 git pull
 ```
 
-Puis résoudre les conflits manuellement.
+2. Ouvrir le fichier `.slx` dans MATLAB
+3. Faire les modifications
+4. Sauvegarder
 
 ---
 
-### Problème avec le modèle Simulink
+# ⚠️ IMPORTANT (Simulink)
 
-* Comparer les versions avec Simulink Compare
-* Revenir à une version précédente si nécessaire
+ Une seule personne modifie le fichier `.slx` à la fois
 
----
-
-## 📣 Communication
-
-La coordination est essentielle :
-
-* Informer l’équipe avant de modifier le `.slx`
-* Discuter des changements importants
+Toujours prévenir l’équipe avant de travailler dessus.
 
 ---
 
-## 🔥 Résumé
 
-* 1 branche par tâche
-* 1 personne à la fois sur `.slx`
-* Toujours pull avant de travailler
-* Commit propre et clair
+## Comment ajouter les modification au repositoire
+
+```bash
+git add .
+```
+
+
+## Étape 1 — Créer un commit
+
+```bash
+git commit -m "Décrire les modifications"
+```
+
+Exemples :
+
+* "Ajout du contrôleur PID"
+* "Correction du capteur"
 
 ---
 
-Bon travail d’équipe 🚀
+## Étape 2 — Envoyer sur GitHub
+
+```bash
+git push
+```
+
+# 🔁 Résumé rapide
+
+```bash
+git add .
+git commit -m "message"
+git push
+```
+
+---
+
+# ❌ À éviter
+
+* Ne pas travailler directement sur GitHub (site web)
+* Ne pas modifier le `.slx` à plusieurs en même temps
+* Ne pas oublier `git pull` avant de travailler
+
+---
+
+# 🛠️ En cas de problème
+
+## Erreur : "not a git repository"
+
+👉 Vous n’êtes pas dans le bon dossier
+
+Faire :
+
+```bash
+cd Simulink-Design-2
+```
+
+
+# 📣 Communication
+
+Toujours informer l’équipe :
+
+* avant de modifier le `.slx`
+* après avoir push des changements importants
+
+---
+
+
+Bon travail d’équipe!
