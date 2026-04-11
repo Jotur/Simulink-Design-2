@@ -21,7 +21,7 @@ fs = 1/Ts;                 % [Hz]
 % ========================================================================
 
 
-Masse = 0; % Entree de la masse appliquee au plateau entre 0 et 0.1 kg 
+Masse = 0.1; % Entree de la masse appliquee au plateau entre 0 et 0.1 kg 
 
 % Gravite [m/s^2]
 g = 9.81;      
@@ -117,7 +117,7 @@ Kp_i = 0.18;
 Ki_i = 180;
 
 % Gain additionnel 
-Kamp = 0.95;
+Kamp = 1/0.95;
 
 Vmoff = 2.5; 
 
@@ -142,7 +142,7 @@ Kpwmo = 5;              % Gain sortie PWM
 numP = [1]; % num TF PWM
 denP = [3.1861e-12 3.9953e-7 1.4575e-3 1]; % den TF PWM
 
-
+% Etage aval montre sur la capture
 Opwmd = 2.5; % offset etage PWM
 Kpwme = 0.8; % gain etage PWM
 KampL = 1;   % gain ampli final
@@ -157,10 +157,8 @@ Vamax = 5; % sat max Vactionneur
 Rb = 1.63;              % Resistance bobine [ohm]
 Kf = 0.5;               % Gain 0.5 
 
-i0 = 0;                 % Condition initiale du courant integre
+i0 = 0;                  % Condition initiale du courant integre
 F0 = 0;                 % Condition initiale force [N]
-
-G_act = -1;
 
 % Polynome L(x) = aL2*x^2 + aL1*x + aL0
 aL2 = -4.55e-6;
