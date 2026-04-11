@@ -4,10 +4,10 @@ function app = launch_simulateur_gui(modelName)
 %
 % Usage:
 %   app = launch_simulateur_gui()
-%   app = launch_simulateur_gui('Simulateur_V7_eq06')
+%   app = launch_simulateur_gui('Simulateur_VRemise_eq06')
 
     if nargin < 1 || strlength(string(modelName)) == 0
-        modelName = "Simulateur_V7_eq06";
+        modelName = "Simulateur_VRemise_eq06";
     end
     modelName = char(modelName);
 
@@ -20,7 +20,7 @@ function app = launch_simulateur_gui(modelName)
     localPushConfigToBase(cfg);
 
     try
-        update_simulateur_v7_eq06(mdl, cfg);
+        update_simulateur_VRemise_eq06(mdl, cfg);
     catch ME
         warning('Mise à jour initiale incomplète: %s', ME.message);
     end
@@ -84,13 +84,6 @@ function app = launch_simulateur_gui(modelName)
     ylabel(app.AxPos, 'Position [m]');
     grid(app.AxPos, 'on');
 
-    app.AxVel = uiaxes(rightGrid);
-    app.AxVel.Layout.Row = 1;
-    app.AxVel.Layout.Column = 2;
-    title(app.AxVel, 'Vitesse de la lame');
-    xlabel(app.AxVel, 'Temps [s]');
-    ylabel(app.AxVel, 'Vitesse [m/s]');
-    grid(app.AxVel, 'on');
 
     app.AxMisc = uiaxes(rightGrid);
     app.AxMisc.Layout.Row = 2;
@@ -235,7 +228,7 @@ function app = buildInfoTab(app, parent)
         'ou depuis simOut_latest si nécessaire.'
         ''
         'Si certains chemins de blocs ont changé dans le .slx,'
-        'mets à jour la fonction update_simulateur_v7_eq06.m.'
+        'mets à jour la fonction update_simulateur_VRemise_eq06.m.'
     };
     uitextarea(parent, 'Position', [10 10 380 520], 'Editable', 'off', 'Value', txt);
 end
@@ -284,7 +277,7 @@ function onApply(fig)
     localPushConfigToBase(cfg);
 
     try
-        update_simulateur_v7_eq06(app.ModelName, cfg);
+        update_simulateur_VRemise_eq06(app.ModelName, cfg);
         localLog(fig, 'Paramètres appliqués au modèle.');
     catch ME
         localLog(fig, ['Échec partiel de mise à jour: ' ME.message]);
@@ -464,12 +457,12 @@ end
 
 function localConfigureLogging(mdl)
     try
-        set_param([mdl '/Lame/To Workspace1'], 'VariableName', 'positionlame');
+        set_param([mdl '/Lame/To Workspace1'], 'VariableName', 'position_lame');
         set_param([mdl '/Lame/To Workspace1'], 'SaveFormat', 'Structure With Time');
     catch
     end
     try
-        set_param([mdl '/Lame/To Workspace2'], 'VariableName', 'vitesselame');
+        set_param([mdl '/Lame/To Workspace2'], 'VariableName', 'vitesse_lame');
         set_param([mdl '/Lame/To Workspace2'], 'SaveFormat', 'Structure With Time');
     catch
     end

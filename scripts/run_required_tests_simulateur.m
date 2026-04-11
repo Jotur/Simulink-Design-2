@@ -3,7 +3,7 @@ function results = run_required_tests_simulateur(modelName, whichTest, cfg)
 % Lance les cas exigés par la grille de manière simple et reproductible.
 
     if nargin < 1 || strlength(string(modelName)) == 0
-        modelName = "Simulateur_V7_eq06";
+        modelName = "Simulateur_VRemise_eq06";
     end
     if nargin < 2 || strlength(string(whichTest)) == 0
         whichTest = "all";
@@ -19,7 +19,7 @@ function results = run_required_tests_simulateur(modelName, whichTest, cfg)
         load_system(modelName);
     end
 
-    update_simulateur_v7_eq06(modelName, cfg);
+    update_simulateur_VRemise_eq06(modelName, cfg);
 
     allTests = { ...
         'beam_only', ...
@@ -99,8 +99,8 @@ function results = run_required_tests_simulateur(modelName, whichTest, cfg)
             'StopTime', num2str(caseCfg.sim.stopTime), ...
             'ReturnWorkspaceOutputs', 'on');
 
-        pos = localTryGetSeries(simOut, 'positionlame');
-        vel = localTryGetSeries(simOut, 'vitesselame');
+        pos = localTryGetSeries(simOut, 'position_lame');
+        vel = localTryGetSeries(simOut, 'vitesse_actionneur');
 
         beamExport = build_system_export_struct(caseCfg);
 
@@ -115,9 +115,9 @@ function results = run_required_tests_simulateur(modelName, whichTest, cfg)
 
         if strcmpi(caseName, 'calibration')
             caseResult.calibration_points = struct( ...
+                'mass10g', cfg.calibration.mass50g, ...
+                'mass20g', cfg.calibration.mass20g, ...
                 'mass50g', cfg.calibration.mass50g, ...
-                'mass50p1g', cfg.calibration.mass50p1g, ...
-                'mass5g', cfg.calibration.mass5g, ...
                 'mass70g', cfg.calibration.mass70g);
         end
 
